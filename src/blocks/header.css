@@ -1,0 +1,99 @@
+.header {
+  width: 880px;
+  max-width: 100%;
+}
+
+.header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.header__logo {
+  display: flex;
+  align-items: flex-start;
+  letter-spacing: 1.5px;
+  font-weight: normal;
+  margin: 0;
+  padding-top: 45px;
+  height: 74px;
+  font-size: 33px;
+}
+
+.header__logo-vector {
+  font-size: 8px;
+}
+
+.header__line {
+  background-color: #545454;
+  opacity: 70%;
+  height: 1px;
+}
+
+.content__element-picture {
+  width: 282px;
+  height: 282px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+}
+
+.header__user-info {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.header__user-email {
+  margin-right: 20px;
+  font-weight: 500;
+}
+
+.header__logout-button {
+  background-color: #000;
+  color: #A9A9A9;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 400;
+}
+
+.header__login-button {
+  background-color: #000;
+  color: #A9A9A9;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.header__register-button {
+  background-color: #000;
+  color: #A9A9A9;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 880px) {
+  .header__logo {
+    margin-left: 27px;
+    margin-right: 167px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .header__logo {
+    margin-left: 27px;
+    margin-right: 167px;
+  }
+}

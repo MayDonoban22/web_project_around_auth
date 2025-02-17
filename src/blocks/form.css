@@ -1,0 +1,146 @@
+.popup__plus {
+  display: none;
+  position: fixed;
+  top: 25%;
+  left: 35%;
+}
+
+.form__show {
+  display: block;
+}
+
+.form__update {
+  border: 1px solid #fff;
+  background-color: #000;
+  border-radius: 3px;
+  color: #fff;
+  width: 358px;
+  height: 50px;
+  font-family: "Inter", Helvetica, sans-serif;
+  font-size: 18px;
+  cursor: url("../images/hand.png"), auto;
+}
+
+.form__update:hover {
+  background-color: #545454;
+}
+
+.form__close {
+  width: 41px;
+  height: 41px;
+  position: absolute;
+  top: -33px;
+  right: -33px;
+  background-image: url("../images/Close-icon.png");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  cursor: url("../images/hand.png"), auto;
+  border: none;
+  z-index: 1;
+}
+
+.form__close:hover {
+  opacity: 0.5;
+}
+
+.form__edit-profile {
+  border: 1px solid white;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 430px;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.form__title {
+  font-size: 18px;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.form__item {
+  width: 358px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 27px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid #c4c4c4;
+  font-size: 14px;
+}
+
+.form__overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.form__update-disabled {
+  border: 1px solid #000000;
+  background-color: #f1f1f1;
+  cursor: default;
+  color: #000000;
+  opacity: 0.2;
+}
+
+@media screen and (max-width: 880px) {
+  .popup__form {
+    position: fixed;
+    top: 18%;
+    left: 33%;
+  }
+
+  .form__edit-profile {
+    width: 282px;
+    height: 322px;
+  }
+
+  .form__item {
+    width: 238px;
+    height: 30px;
+    border-bottom: 1px solid #c4c4c4;
+  }
+
+  .form__update {
+    border-radius: 3px;
+    width: 238px;
+    height: 46px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .popup__plus {
+    position: fixed;
+    top: 18%;
+    left: 24%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .popup__plus {
+    position: fixed;
+    top: 17%;
+    left: 8%;
+  }
+
+  .form__edit-profile {
+    width: 264px;
+    height: 350px;
+  }
+
+  .form__item {
+    width: 238px;
+    height: 25px;
+  }
+}
