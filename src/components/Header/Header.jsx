@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Header({ userEmail, onLogout }) {
-  const location = useLocation(); // Obtenemos la ruta actual
+  const location = useLocation();
   const userContext = useContext(CurrentUserContext);
   const { currentUser } = userContext;
 

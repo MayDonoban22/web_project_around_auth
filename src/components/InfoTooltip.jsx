@@ -17,7 +17,7 @@ function InfoTooltip({ isOpen, onClose, isSuccess }) {
       {isSuccess ? (
         <img src="/check-icon.png" alt="check icon" />
       ) : (
-        <img src="/uncheck.png" alt="uncheck icon" />
+        <img src="/uncheck-icon.png" alt="uncheck icon" />
       )}
       <div
         className={`popup__icon ${

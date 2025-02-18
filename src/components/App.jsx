@@ -10,7 +10,7 @@ import Footer from "./Footer/Footer";
 import { useState } from "react";
 import { api } from "../utils/Api";
 import * as auth from "../utils/auth";
-import { setToken, getToken } from "../utils/token";
+import { setToken, getToken, removeToken } from "../utils/token";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import { getUserEmail } from "../utils/auth";
 
@@ -48,45 +48,123 @@ function App() {
         });
     }
   };
+  const fetchUserData = (token, shouldRedirect = false) => {
+    return Promise.all([
+      api.getUsers(token),
+      getUserEmail(token),
+      api.getCards(),
+    ])
+      .then(([userData, userEmailData, cardsData]) => {
+        setIsLoggedIn(true);
+        setCurrentUser(userData);
+        setUserData({ email: userEmailData.data.email });
+        setuserName(userData.name);
+        setUserDescription(userData.about);
+        setUserAvatar(userData.avatar);
+        setCards(cardsData);
+
+        if (shouldRedirect) {
+          const redirectPath = location.state?.from?.pathname || "/";
+          navigate(redirectPath);
+        }
+      })
+      .catch((error) => {
+        console.error("Error al obtener datos:", error);
+      });
+  };
+
+  useEffect(() => {
+    const jwt = getToken();
+    if (!jwt) return;
+    fetchUserData(jwt, true);
+  }, []);
 
   const handleLogin = ({ email, password }) => {
-    console.log(email, password);
-    if (!email || !password) {
-      return;
-    }
+    if (!email || !password) return;
+
     auth
       .authorize(password, email)
       .then((data) => {
         if (data.token) {
           setToken(data.token);
-          setUserData(data.user);
-          setIsLoggedIn(true);
-          const redirectPath = location.state?.from?.pathname || "/";
-          navigate(redirectPath);
+          fetchUserData(data.token, true);
         }
       })
       .catch(console.error);
   };
-  useEffect(() => {
-    const jwt = getToken();
-    if (!jwt) return;
 
-    Promise.all([api.getUsers(jwt), getUserEmail(jwt), api.getCards()])
-      .then(([userData, userEmailData, cardsData]) => {
-        setIsLoggedIn(true);
+  // const handleLogin = ({ email, password }) => {
+  //   console.log(email, password);
+  //   if (!email || !password) {
+  //     return;
+  //   }
+  //   auth
+  //     .authorize(password, email)
+  //     .then((data) => {
+  //       if (data.token) {
+  //         Promise.all([
+  //           api.getUsers(data.token),
+  //           getUserEmail(data.token),
+  //           api.getCards(),
+  //         ])
+  //           .then(([userData, userEmailData, cardsData]) => {
+  //             setIsLoggedIn(true);
 
-        setCurrentUser(userData);
-        setUserData({ email: userEmailData.email });
-        setuserName(userData.name);
-        setUserDescription(userData.about);
-        setUserAvatar(userData.avatar);
+  //             setCurrentUser(userData);
+  //             setUserData({ email: userEmailData.data.email });
+  //             setuserName(userData.name);
+  //             setUserDescription(userData.about);
+  //             setUserAvatar(userData.avatar);
 
-        setCards(cardsData);
-      })
-      .catch((error) => {
-        console.error("Error al obtener datos:", error);
-      });
-  }, []);
+  //             setCards(cardsData);
+  //             const redirectPath = location.state?.from?.pathname || "/";
+  //             navigate(redirectPath);
+  //           })
+  //           .catch((error) => {
+  //             console.error("Error al obtener datos:", error);
+  //           });
+  //       }
+  //     })
+  //     .catch(console.error);
+  // };
+  const onLogout = () => {
+    setIsLoggedIn(false);
+
+    setToken(null);
+    setCurrentUser(null);
+    setUserData({ email: "" });
+    setuserName("");
+    setUserDescription("");
+    setUserAvatar("");
+
+    setCards(null);
+    removeToken();
+    const redirectPath = location.state?.from?.pathname || "/login";
+    navigate(redirectPath);
+  };
+
+  // useEffect(() => {
+  //   const jwt = getToken();
+  //   if (!jwt) return;
+
+  //   Promise.all([api.getUsers(jwt), getUserEmail(jwt), api.getCards()])
+  //     .then(([userData, userEmailData, cardsData]) => {
+  //       setIsLoggedIn(true);
+
+  //       setCurrentUser(userData);
+  //       setUserData({ email: userEmailData.data.email });
+  //       setuserName(userData.name);
+  //       setUserDescription(userData.about);
+  //       setUserAvatar(userData.avatar);
+
+  //       setCards(cardsData);
+  //       const redirectPath = location.state?.from?.pathname || "/";
+  //       navigate(redirectPath);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error al obtener datos:", error);
+  //     });
+  // }, []);
 
   async function handleCardLike(card) {
     const isLiked = card.isLiked;
@@ -192,7 +270,7 @@ function App() {
           isLoggedIn,
         }}
       >
-        <Header userEmail={currentUser?.email} />
+        <Header userEmail={userData?.email} onLogout={onLogout} />
         <Routes>
           <Route
             path="/login"
