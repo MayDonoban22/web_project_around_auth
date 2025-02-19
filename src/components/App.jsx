@@ -41,6 +41,8 @@ function App() {
         .register(password, email)
         .then(() => {
           navigate("/login");
+          setIsRegistrationSuccess(true);
+          setIsInfoTooltipOpen(true);
         })
         .catch(() => {
           setIsRegistrationSuccess(false);
@@ -90,7 +92,10 @@ function App() {
           fetchUserData(data.token, true);
         }
       })
-      .catch(console.error);
+      .catch(() => {
+        setIsRegistrationSuccess(false);
+        setIsInfoTooltipOpen(true);
+      });
   };
 
   // const handleLogin = ({ email, password }) => {

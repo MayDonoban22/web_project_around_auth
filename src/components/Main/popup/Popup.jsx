@@ -8,6 +8,8 @@ function Popup({
   onSubmit,
   children,
   buttonText = "Guardar",
+  showButton = true,
+  showText = true,
 }) {
   function handleClick(e) {
     e.preventDefault();
@@ -38,16 +40,18 @@ function Popup({
             onClick={handleClickClose}
             className="popup__close"
           ></button>
-          <h2 className="popup__title">{title}</h2>
+          {showText && <h2 className="popup__title">{title}</h2>}
           {children}
-          <button
-            onClick={handleClick}
-            className="popup__update"
-            type="submit"
-            id="btn"
-          >
-            {buttonText}
-          </button>
+          {showButton && (
+            <button
+              onClick={handleClick}
+              className="popup__update"
+              type="submit"
+              id="btn"
+            >
+              {buttonText}
+            </button>
+          )}
         </form>
         <div className="popup__overlay"></div>
       </div>

@@ -129,6 +129,22 @@
   width: 370px;
 }
 
+.popup__animated-image {
+  animation: check 1s infinite;
+}
+
+@keyframes check {
+  50% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+
+
+}
+
 @media screen and (max-width: 880px) {
   .popup {
     position: fixed;
