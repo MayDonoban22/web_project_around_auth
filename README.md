@@ -7,3 +7,7 @@ Durante el desarrollo del Sprint 17, se tomó como base el proyecto anterior "Ar
 Este sistema está diseñado para gestionar la autenticación y autorización de usuarios mediante la generación de un token, el cual se almacena en localStorage. Esto permite que, al iniciar sesión, el usuario permanezca autenticado incluso si recarga la página. Asimismo, si se detecta un intento de acceso sin autorización o una mala redirección, el usuario es enviado automáticamente a la pantalla de login.
 
 Para garantizar una experiencia fluida y segura, se implementaron rutas protegidas y redirecciones automáticas, asegurando un flujo de navegación dinámico y eficiente en la aplicación.
+
+# Enlace de la Red Social
+
+https://maydonoban22.github.io/web_project_around_auth/

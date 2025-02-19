@@ -7,7 +7,7 @@ function Header({ userEmail, onLogout }) {
   const userContext = useContext(CurrentUserContext);
   const { currentUser } = userContext;
 
-  const isLogin = location.pathname === "/login"; // Verificamos si estamos en /login
+  const isLogin = location.pathname === "/login";
 
   return (
     <header className="header">
