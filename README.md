@@ -8,6 +8,6 @@ Este sistema está diseñado para gestionar la autenticación y autorización de
 
 Para garantizar una experiencia fluida y segura, se implementaron rutas protegidas y redirecciones automáticas, asegurando un flujo de navegación dinámico y eficiente en la aplicación.
 
-# Enlace de la Red Social
+## Enlace de la Red Social
 
 https://maydonoban22.github.io/web_project_around_auth/
