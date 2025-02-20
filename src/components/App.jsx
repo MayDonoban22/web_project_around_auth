@@ -98,40 +98,6 @@ function App() {
       });
   };
 
-  // const handleLogin = ({ email, password }) => {
-  //   console.log(email, password);
-  //   if (!email || !password) {
-  //     return;
-  //   }
-  //   auth
-  //     .authorize(password, email)
-  //     .then((data) => {
-  //       if (data.token) {
-  //         Promise.all([
-  //           api.getUsers(data.token),
-  //           getUserEmail(data.token),
-  //           api.getCards(),
-  //         ])
-  //           .then(([userData, userEmailData, cardsData]) => {
-  //             setIsLoggedIn(true);
-
-  //             setCurrentUser(userData);
-  //             setUserData({ email: userEmailData.data.email });
-  //             setuserName(userData.name);
-  //             setUserDescription(userData.about);
-  //             setUserAvatar(userData.avatar);
-
-  //             setCards(cardsData);
-  //             const redirectPath = location.state?.from?.pathname || "/";
-  //             navigate(redirectPath);
-  //           })
-  //           .catch((error) => {
-  //             console.error("Error al obtener datos:", error);
-  //           });
-  //       }
-  //     })
-  //     .catch(console.error);
-  // };
   const onLogout = () => {
     setIsLoggedIn(false);
 
@@ -147,29 +113,6 @@ function App() {
     const redirectPath = location.state?.from?.pathname || "/login";
     navigate(redirectPath);
   };
-
-  // useEffect(() => {
-  //   const jwt = getToken();
-  //   if (!jwt) return;
-
-  //   Promise.all([api.getUsers(jwt), getUserEmail(jwt), api.getCards()])
-  //     .then(([userData, userEmailData, cardsData]) => {
-  //       setIsLoggedIn(true);
-
-  //       setCurrentUser(userData);
-  //       setUserData({ email: userEmailData.data.email });
-  //       setuserName(userData.name);
-  //       setUserDescription(userData.about);
-  //       setUserAvatar(userData.avatar);
-
-  //       setCards(cardsData);
-  //       const redirectPath = location.state?.from?.pathname || "/";
-  //       navigate(redirectPath);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error al obtener datos:", error);
-  //     });
-  // }, []);
 
   async function handleCardLike(card) {
     const isLiked = card.isLiked;
