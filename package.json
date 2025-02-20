@@ -1,5 +1,5 @@
 {
-  "homepage": " https://maydonoban22.github.io/web_project_around_auth",
+  "homepage": "https://maydonoban22.github.io/web_project_around_auth",
   "name": "web_project_around_auth",
   "version": "0.1.0",
   "private": true,
@@ -42,6 +42,6 @@
   },
   "devDependencies": {
     "eslint-config-airbnb-base": "^15.0.0",
-    "gh-pages": "^6.2.0"
+    "gh-pages": "^6.3.0"
   }
 }
