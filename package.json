@@ -20,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build && scp -r ./build/* rppride_2411@aroundcol.chickenkiller.com:/home/rppride_2411/frontend"
   },
   "eslintConfig": {
     "extends": [

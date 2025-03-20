@@ -48,7 +48,7 @@ const Register = ({ handleRegistration }) => {
       </form>
       <div className="register__signin">
         <p>¿Ya eres miembro? </p>
-        <Link to="/login" className="register__login-link">
+        <Link to="/ login" className="register__login-link">
           Inicia sesión aquí
         </Link>
       </div>
